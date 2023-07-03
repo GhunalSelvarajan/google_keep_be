@@ -1,0 +1,72 @@
+[tool.poetry]
+name = "google-keep-backend"
+version = "0.1.0"
+description = "Backend API for Google Keep backend built with FastAPI and Docker"
+authors = ["Vetrichelvan <pythonhubdev@gmail.com>"]
+license = "BSD 3-Clause License"
+readme = "README.md"
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = { version = "^0.99.0" }
+python-dotenv = { version = "^1.0.0"}
+pydantic = { version = "^1.10.10"}
+beanie = "^1.19.2"
+python-box = { version = "^7.0.1"}
+uvicorn = "^0.22.0"
+firebase-admin = "^6.2.0"
+python-multipart = "^0.0.6"
+
+
+[tool.poetry.group.development.dependencies]
+pytest-cov = "^4.1.0"
+pytest = "^7.4.0"
+mypy = "^1.4.1"
+ruff = "^0.0.275"
+black = { extras = ["d"], version = "^23.3.0" }
+isort = "^5.12.0"
+pre-commit = "^3.3.3"
+syrupy = "^4.0.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+color = true
+line-length = 120
+preview = true
+
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+src = ["."]
+target-version = "py311"
+fix = true
+show-source = true
+line-length = 120
+select = ["E", "F", "N801", "N802", "N803", "N805", "N806", "Q0"]
+ignore = ["F401"]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "double"
+multiline-quotes = "double"
+docstring-quotes = "double"
+
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.flake8-type-checking]
+strict = true
+
+[tool.ruff.isort]
+combine-as-imports = true
+
+
+[tool.mypy]
+strict = true
